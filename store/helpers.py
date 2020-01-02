@@ -172,8 +172,9 @@ def send_email_to_follower_about_added_product(data):
         recipient = []
         follow_data = []
         followers, status, message = get_follower_by_stores_function(data)
+        all_user = UserProfile.objects.all()
         for obj in followers:
-            follow_data.append(UserProfile.objects.get(id = obj["id"]))
+            follow_data.append(all_user.get(id = obj["id"]))
         for obj in follow_data:
             recipient.append(obj.email)
         send_mail(subject, str(details_dict), EMAIL_HOST_USER, recipient, fail_silently= False)
