@@ -776,7 +776,6 @@ def add_follower_to_the_store(request):
     follower_data, status, message = add_follower_to_the_store_function(data)
     # print(follower_data)
     if status:
-
         return JsonResponse({'validation' : message, "data" : follower_data.get_json()})
     else:
         return JsonResponse({'validation' : message, "status" : False})
